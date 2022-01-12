@@ -50,6 +50,7 @@ import { UsersProps, People } from './App';
          {users && (<FlatList
          data={users}
          renderItem={renderItem}
+         keyExtractor={(item, index) => String(index)}
          contentContainerStyle={{ flexGrow: 1 }}
          />)}
       </View>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import ListScreen from './ListScreen';
 import MapScreen from './MapScreen';
@@ -64,8 +65,35 @@ export default function App() {
   return (
       <NavigationContainer>
       <Tab.Navigator initialRouteName='Users'>
-        <Tab.Screen name='Users' component={ListScreen} initialParams={{people: people}} />
-        <Tab.Screen name='Location' component={MapScreen} initialParams={{focusPeople: defaultMarker}} />
+        <Tab.Screen
+          name='Users' 
+          options={{
+            tabBarIcon: ({size,focused,color}) => {
+              return (
+                <Icon name='user'
+                  size={30}
+                  color='#517fa4'
+                />
+              );
+            },
+          }}
+          component={ListScreen}
+          initialParams={{people: people}} />
+        <Tab.Screen
+           name='Location'
+           options={{
+            tabBarIcon: ({size,focused,color}) => {
+              return (
+                <Icon name='location-arrow'
+                  size={30}
+                  color='#517fa4'
+                />
+              );
+            },
+          }}
+           component={MapScreen}
+           initialParams={{focusPeople: defaultMarker}}
+         />
       </Tab.Navigator>
     </NavigationContainer>
     
